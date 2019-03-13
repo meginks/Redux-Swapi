@@ -8,13 +8,14 @@ export const FAILURE = 'FAILURE';
 // one for fetching, one for success and one for failure
 
 export const getCharacter = () => dispatch => {
-    dispatch({ FETCHING })
+    dispatch({ type: FETCHING })
     axios
     .get('https://swapi.co/api/people/')
-    .then(res => {
+    .then(res => { 
+        console.log(res);
         dispatch({ 
             type: SUCCESS,
-            payload: res.data })
+            payload: res.data.results })
         })
     .catch(err => {
         // STEP X - Handle the error state - dispatch the error action
